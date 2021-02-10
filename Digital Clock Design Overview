@@ -1,0 +1,119 @@
+Since there are only 4 seven segment displays, I have chosen two display modes- 
+1)Hours and minutes
+2)Minutes and seconds
+
+In these display modes, we will have to generate pulses of various time periods.
+If we want a pulse to be generated every 0.01s, the clock has to be modified to 100Hz. 
+
+Clock divider for 100 Hz:
+
+-Clock available is 10MHz.
+-Count value= 10000000/100=100000.
+
+clk_100hz : process (clk) --clock divider for 100Hz
+variable count1 : bit_vector(15 downto 0):= “0000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count1 = “1100001101010000” then --upto 50000
+            clk1 <= not clk1;
+            count1 := “0000000000000000”;
+        end if;
+        count1 := count1 + 1;
+     end if;
+end process
+
+We need a clock divider of 250Hz for cathodes and anodes(to drive the displays of BASYS3 Board).
+-Count value=10000000/250=40000.
+clk_250hz : process (clk) --clock divider for 250Hz
+variable count2 : bit_vector(14 downto 0):= “000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count2 = “100111000100000” then --upto 20000
+            clk2 <= not clk2;
+            count2 := “000000000000000”;
+        end if;
+        count2 := count2 + 1;
+     end if;
+end process
+
+Clock Divider for 1Hz(To generate 1s):
+-Count value=10000000.
+clk_1hz : process (clk) --clock divider for 1Hz
+variable count3 : bit_vector(22 downto 0):= “00000000000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count3 = “10011000100101101000000” then --upto 5000000
+            clk3 <= not clk3;
+            count3 := “00000000000000000000000”;
+        end if;
+        count3 := count3 + 1;
+     end if;
+end process
+
+Clock divider for 1/60Hz(To generate 1 pulse per 60s=1 pulse per minute):
+-Count value=60MHz.
+clk_1/60hz : process (clk) --clock divider for 1/60Hz
+variable count4 : bit_vector(24 downto 0):= “0000000000000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count4 = “1110010011100001110000000” then --upto 30000000
+            clk4 <= not clk4;
+            count4 := “0000000000000000000000000” ;
+        end if;
+        count4 := count4 + 1;
+     end if;
+end process
+
+CLOCK DIVIDER:
+entity clock_dividers is
+   Port ( clk : in bit;
+             clk_250 : out bit;
+             clk_1hz : out bit;
+             clk_1/60hz: out bit);
+end clock_dividers;
+
+architecture Behavioral of clock_dividers is
+signal clk2, clk3,clk4 : BIT;
+begin
+clk_250hz : process (clk) --clock divider for 250Hz
+variable count2 : bit_vector(14 downto 0):= “000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count2 = “100111000100000” then --upto 20000
+            clk2 <= not clk2;
+            count2 := “000000000000000”;
+        end if;
+        count2 := count2 + 1;
+     end if;
+end process
+
+clk_1hz : process (clk) --clock divider for 1Hz
+variable count3 : bit_vector(22 downto 0):= “00000000000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count3 = “10011000100101101000000” then --upto 5000000
+            clk3 <= not clk3;
+            count3 := “00000000000000000000000”;
+        end if;
+        count3 := count3 + 1;
+     end if;
+end process
+
+clk_1/60hz : process (clk) --clock divider for 1/60Hz
+variable count4 : bit_vector(24 downto 0):= “0000000000000000000000000”;
+begin
+    if (rising_edge(clk)) then
+        if count4 = “1110010011100001110000000” then --upto 30000000
+            clk4 <= not clk4;
+            count4 := “0000000000000000000000000” ;
+        end if;
+        count4 := count4 + 1;
+     end if;
+end process
+
+clk_1/60hz <= clk4
+clk_1hz  <=clk3
+clk_250hz<=clk2
+
+end Behavioral;
+
