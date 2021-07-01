@@ -3,6 +3,8 @@ COL-215 Course Offered By IIT-Delhi
 
 Reference book- [Fundamentals of Digital Logic with VHDL Design](https://www.flipkart.com/fundamentals-digital-logic-vhdl-design-cd-rom/p/itmfbum95rwfqqza)
 
+- [Assignment 1](https://github.com/anannyamathur/Digital-Logic-And-System-Design/blob/main/Assignment%201.pdf)
+
 - Designed a digital clock using VHDL. 
 
 - Designed an image filter in VHDL that uses a 3x3 sliding window for QQVGA size images, with 8-bit pixel resolution. 
