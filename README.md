@@ -14,3 +14,5 @@ devices 1 and 2 will be serviced only once before the device 3 is granted its re
 
 
 <img width="255" alt="arbiterFSM" src="https://user-images.githubusercontent.com/78497850/107569799-b9f33d80-6c0e-11eb-9299-24e2acd79bd2.PNG">
+
+- [ASSIGNMENT 4](https://github.com/anannyamathur/Digital-Logic-And-System-Design/blob/main/Assignment%204.pdf)
