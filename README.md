@@ -1,7 +1,7 @@
 # Digital-Logic-And-System-Design
 COL-215 Course Offered By IIT-Delhi
 
-Reference book- [Fundamentals of Digital Logic with VHDL Design](https://g.co/kgs/U6hVpV)
+Reference book- [Fundamentals of Digital Logic with VHDL Design](https://drive.google.com/file/d/1zC2FNseI1grNpqCyox8PS9FCE0B1VrZj/view?usp=sharing)
 
 -Designed a digital clock using VHDL. 
 
