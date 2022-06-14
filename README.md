@@ -1,5 +1,5 @@
 # Digital-Logic-And-System-Design
-COL-215 Course Offered By IIT-Delhi
+COL-215 Course Offered By IIT-Delhi in the first semester of the academic year 2020-21 under Professor Anshul Kumar. 
 
 Reference book- [Fundamentals of Digital Logic with VHDL Design](https://www.flipkart.com/fundamentals-digital-logic-vhdl-design-cd-rom/p/itmfbum95rwfqqza)
 
